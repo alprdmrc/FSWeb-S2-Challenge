@@ -75,18 +75,20 @@ function cumleKur(birinci, ikinci="", ucuncu="", dorduncu="", besinci=""){
 
 /* (Oto test yok) cumleKur fonksiyonuna yalnızca 1 parametre göndererek "Hello World!" stringini elde edin, sonucu konsolde gözlemleyin */
 
-
+console.log(cumleKur("Hello World!"))
 
 
 /* (Oto test yok) cumleKur fonksiyonuna yalnızca 2 parametre göndererek "Hello World!" stringini elde edin, sonucu konsolde gözlemleyin */
 
-
+console.log(cumleKur("Hello ","World!"))
 
 
 /* (Oto test var) cumleKur fonksiyonuna 5 parametre göndererek "Ben iyi bir yazılımcı olacağım!" stringini elde edin, sonucu `bircumle` değişkenine atayın ve konsolde gözlemleyin */
 var bircumle;
-
+bircumle = cumleKur("Ben ","iyi ", "bir ", "yazılımcı ", "olacağım!")
+console.log(bircumle)
 /* kodlar buraya */
+
 
 
 
@@ -104,9 +106,12 @@ var bircumle;
 	*/
 	
 
-function cumlelereDonustur(/* kodlar buraya */ ){
-	/* kodlar buraya */
+function cumlelereDonustur(arr, ayrac=','){
+	return arr.map((kelimeler)=>{
+		return kelimeler.join(ayrac)
+	})
 }
+console.log(cumlelereDonustur(cumleler, " "))
 
 
 
@@ -120,9 +125,11 @@ function cumlelereDonustur(/* kodlar buraya */ ){
 			6. Oluşturulan paragraf döndürülecek
 	*/
 	
-function paragrafOlustur(/* kodlar buraya */ ){
-	/* kodlar buraya */ 
+function paragrafOlustur(arr, cbCumleKur, cbCumlelereDonustur){
+	let newArr = cbCumlelereDonustur(arr, ' ');
+	return cbCumleKur(newArr[1],newArr[3],newArr[5],newArr[7],newArr[9])
 }
+console.log(paragrafOlustur(cumleler, cumleKur, cumlelereDonustur))
 
 
 /* 	GÖREV 3:
@@ -131,6 +138,9 @@ function paragrafOlustur(/* kodlar buraya */ ){
  */
 //3a çözümü
 /* kodlar buraya */
+meyveler.pop()
+meyveler.shift()
+
 
 
 
@@ -141,7 +151,8 @@ function paragrafOlustur(/* kodlar buraya */ ){
 */
 //3b çözümü
 /* kodlar buraya */
-
+sebzeler.push("🦔")
+sebzeler.unshift("🐇")
 
 
 
@@ -155,6 +166,7 @@ function paragrafOlustur(/* kodlar buraya */ ){
 /* kodlar buraya */
 
 var manav;
+manav = meyveler.concat(sebzeler)
 
 
 
@@ -170,10 +182,14 @@ var manav;
 			4. elde edilen string döndürülecek
  */
 
-function emojileriDonustur(/* kodlar buraya */){
-/* kodlar buraya */
-
+function emojileriDonustur(str, emojis){
+	for(let key in emojis){
+		str = str.replaceAll(key,emojis[key])
+		str = str.replaceAll(key.toUpperCase(),emojis[key])
+	}
+	return str
 }
+console.log(emojileriDonustur(":D :D Cok komik :d :)",emojiler))
 
 
 
